@@ -1,0 +1,10 @@
+kernel: 7  # kernel num
+
+# generate random _dataset
+random: True
+size: 200   # data size
+range:      # kernel x,y value ∈ [min, max]
+  min: -100
+  max: 100
+radius: 50  # generate data radius for random kernel (x,y)
+name: "example"
