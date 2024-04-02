@@ -1,0 +1,9 @@
+# decision tree setting
+max_depth: 10
+criterion: 'gini'
+
+# dataset setting
+n_samples: 200
+n_feature: 2
+n_informative: 2
+random_seed: 8848
