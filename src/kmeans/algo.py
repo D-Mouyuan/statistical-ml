@@ -1,6 +1,6 @@
 import numpy as np
 from dataset import KMeans_dataset
-from utils.plot import *
+from kmeans.plot import draw_clusters_map
 
 
 class KMeans:

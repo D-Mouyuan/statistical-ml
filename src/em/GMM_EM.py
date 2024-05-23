@@ -50,7 +50,7 @@ class EM:
             self.Alpha[i] = weight / self.N
 
     def run(self):
-        """ run EM algorithm """
+        """ run em algorithm """
         step = 0
         for step in range(self._max_iter_step):
             old_Mu = self.Mu.copy()

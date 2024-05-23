@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# @Author: Crookery
+
 import matplotlib.pyplot as plt
 import numpy as np
 

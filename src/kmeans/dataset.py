@@ -1,7 +1,6 @@
 import numpy as np
-import os
 import random
-from utils.plot import *
+from kmeans.plot import draw_clusters
 
 
 class KMeans_dataset:

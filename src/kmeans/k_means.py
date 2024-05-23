@@ -1,6 +1,6 @@
 import yaml
-from algo import *
-from dataset import *
+import os
+from algo import KMeans
 
 
 os.chdir(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config"))
