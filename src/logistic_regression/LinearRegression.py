@@ -17,19 +17,12 @@ class LinearRegression:
         self.theta = None
 
     def fit_normal(self, train_data: np.ndarray, train_label: np.ndarray):
-        """
-        :param train_data
-        :param train_label
-        """
         x = np.hstack([np.ones((len(train_data), 1)), train_data])
         # theta = (X X^T)^{-1} X y
         self.theta = np.linalg.inv(x.T.dot(x)).dot(x.T).dot(train_label)
         return self.theta
 
     def predict(self, test_data: np.ndarray):
-        """
-        :param test_data
-        """
         x = np.hstack([np.ones((len(test_data), 1)), test_data])
         return x.dot(self.theta)
 

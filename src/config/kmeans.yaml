@@ -1,4 +1,5 @@
-kernel: 7  # kernel num
+# kernel num
+kernel: 7
 
 # generate random _dataset
 random: True

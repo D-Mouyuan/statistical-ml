@@ -2,7 +2,7 @@ import numpy as np
 
 
 def gaussian_pdf(x, mean, var):
-    """ 高斯概率密度函数 """
+    """ Gaussian probability density function """
     return (1 / np.sqrt(2 * np.pi * var)) * np.exp(-((x - mean) ** 2) / (2 * var))
 
 
@@ -19,21 +19,32 @@ class EM:
         epsilon: float = 0.001,
         debug: bool = False
     ):
+        """
+        :param K: the number of Gaussian distributions
+        :param Mu: initial mean value
+        :param Sigma: initial standard deviation
+        :param Alpha: Percentage
+        :param N: sample size
+        :param sample_data: data
+        :param max_iter_step: max number of iterations
+        :param epsilon: error threshold below which to exit
+        :param debug: debug mode
+        """
         # GMM
-        self.K = K                              # 多少个高斯分布
-        self.Mu = Mu                            # 第 k 个高斯分布的初始均值
-        self.Sigma = Sigma                      # 第 k 个高斯分布的初始标准差
-        self.Alpha = Alpha                      # 第 k 个高斯分布的占比
+        self.K = K
+        self.Mu = Mu
+        self.Sigma = Sigma
+        self.Alpha = Alpha
 
         # Sample data
-        self.N = N                              # 样本量
-        self.data = sample_data                 # 样本数据
-        self.gamma = np.zeros((self.N, self.K)) # 隐变量 γ
+        self.N = N
+        self.data = sample_data
+        self.gamma = np.zeros((self.N, self.K))
 
         # train setting
-        self._max_iter_step = max_iter_step     # 最高迭代次数
-        self._threshold = epsilon               # 误差阈值，低于则退出
-        self._debug = debug                     # debug
+        self._max_iter_step = max_iter_step     #
+        self._threshold = epsilon               #
+        self._debug = debug                     #
 
     def e_step(self):
         """ E步：补全隐变量信息 """
@@ -66,7 +77,7 @@ class EM:
             print("Reached maximum iterations without convergence.")
 
 
-if __name__ == '__main__':
+def main():
     cur_K = 2
     cur_Mu = np.array([0.25, 2.5])
     cur_Sigma = np.array([0.125, 1.67])
@@ -76,3 +87,7 @@ if __name__ == '__main__':
 
     em = EM(K=cur_K, Mu=cur_Mu, Sigma=cur_Sigma, Alpha=cur_Alpha, N=cur_N, sample_data=cur_sample_data, debug=True)
     em.run()
+
+
+if __name__ == '__main__':
+    main()

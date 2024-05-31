@@ -4,24 +4,34 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class SVM:
-    def __init__(self, max_iter=100, kernel='linear'):
-        """
-        input:max_iter(int):最大训练轮数
-              kernel(str):核函数，等于'linear'表示线性，等于'poly'表示多项式
+    def __init__(self, max_iter: int = 100, kernel: str = 'linear'):
+        """ input
+        :param max_iter: Maximum number of training rounds
+        :param kernel: kernel function
         """
         self.max_iter = max_iter
         self._kernel = kernel
+
+        # training args
+        self.m, self.n = tuple()
+        self.X = None
+        self.Y = None
+        self.b = None
+        self.alpha = None
+        self.E = None
+        self.C = None
 
     def init_args(self, features, labels):
         self.m, self.n = features.shape
         self.X = features
         self.Y = labels
         self.b = 0.0
-        # 将Ei保存在一个列表里
+        # save Ei into a list
         self.alpha = np.zeros(self.m)
         self.E = [self._E(i) for i in range(self.m)]
-        # 松弛变量
+        # slack variable
         self.C = 1.0
 
     # KKT条件
@@ -142,7 +152,6 @@ def main():
     plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap='bwr', alpha=0.7)
     # plot support vector
     support_vectors = [i for i, alpha in enumerate(svm.alpha) if alpha > 0]
-    print(svm.alpha)
     plt.scatter(svm.X[support_vectors, 0], svm.X[support_vectors, 1], s=300, c='red', marker='o', edgecolors='k')
     pass
     # plot decision-making boundaries
